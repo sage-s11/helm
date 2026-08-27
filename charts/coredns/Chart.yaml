@@ -18,6 +18,6 @@ maintainers:
   - name: shubham-cmyk
 type: application
 annotations:
-    artifacthub.io/changes: |
+  artifacthub.io/changes: |
     - kind: added
       description: Allow separate labels and selector for the cluster-proportional-autoscaler Deployment
