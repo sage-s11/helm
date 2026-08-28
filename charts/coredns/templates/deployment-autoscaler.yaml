@@ -1,7 +1,12 @@
 {{- if and (.Values.autoscaler.enabled) (not .Values.hpa.enabled) }}
 {{- $asExtraLabels := dict }}
 {{- if .Values.autoscaler.inheritCustomLabels }}
-{{- $asExtraLabels = merge $asExtraLabels (default dict .Values.customLabels) }}
+{{- range $k, $v := (default dict .Values.customLabels) }}
+{{- $_ := set $asExtraLabels $k $v }}
+{{- end }}
+{{- end }}
+{{- range $k, $v := (default dict .Values.autoscaler.customLabels) }}
+{{- $_ := set $asExtraLabels $k $v }}
 {{- end }}
 {{- $asExtraLabels = merge $asExtraLabels (default dict .Values.autoscaler.customLabels) }}
 ---

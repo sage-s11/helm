@@ -117,10 +117,10 @@ tests:
           path: spec.template.metadata.labels.k8s-app
           value: coredns-autoscaler
       - equal:
-          path: spec.selector.matchLabels.app\.kubernetes\.io/name
+          path: spec.selector.matchLabels["app.kubernetes.io/name"]
           value: coredns-autoscaler
       - equal:
-          path: spec.selector.matchLabels.app\.kubernetes\.io/instance
+          path: spec.selector.matchLabels["app.kubernetes.io/instance"]
           value: RELEASE-NAME
 
   - it: should not copy customLabels k8s-app onto autoscaler when inheritCustomLabels is false
